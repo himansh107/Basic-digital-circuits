@@ -59,7 +59,7 @@
 	$display($time, "Test2 start");
 	for(i =0 ; i < num_tests; i= i+1) begin	
 		rand_addr_wr = $random %DEPTH;
-		data_wr = (rand_addr_wr << 4) | ((rand_addr_wr%2) ? 4'hA : 4'h5);
+		data_wr = ((rand_addr_wr%2) ? 4'hA : 4'h5);
 		write_data(data_wr,rand_addr_wr);
 		read_data(rand_addr_wr);
 		#0.1;
