@@ -21,8 +21,6 @@ module alu
 	localparam OP_DEC = 5;
 	localparam OP_AND = 6;
 	localparam OP_NOT = 7;
-	localparam OP_ROL = 8;
-	localparam OP_ROR = 9;
 	
 	always @(*) begin 
 		y = 0; carry_out = 0; borrow = 0; invalid_op = 0;
@@ -35,8 +33,6 @@ module alu
 			OP_DEC : begin {borrow,y} = a-1'b1; end
 			OP_AND :  begin y = a & b; end
 			OP_NOT : begin y = ~a; end
-			OP_ROL : begin y = {a[BUS_WIDTH-2:0], a[BUS_WIDTH-1]}; end
-			OP_ROR : begin y = {a[0], a[BUS_WIDTH-1:1]}; end
 			default : begin invalid_op = 1; end
 		endcase
 	end
